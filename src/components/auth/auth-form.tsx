@@ -1,9 +1,9 @@
+
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 
@@ -12,7 +12,6 @@ type AuthFormProps = {
 };
 
 const AuthForm = ({ mode }: AuthFormProps) => {
-  const navigate = useNavigate();
   const { signIn, signUp } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -96,21 +95,32 @@ const AuthForm = ({ mode }: AuthFormProps) => {
         {mode === "register" && (
           <div className="space-y-2">
             <Label>I am a:</Label>
-            <RadioGroup
-              defaultValue="patient"
-              value={userType}
-              onValueChange={setUserType}
-              className="flex space-x-2"
-            >
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="patient" id="patient" />
+            <div className="flex space-x-4">
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  id="patient"
+                  name="userType"
+                  value="patient"
+                  checked={userType === "patient"}
+                  onChange={() => setUserType("patient")}
+                  className="mr-2"
+                />
                 <Label htmlFor="patient" className="cursor-pointer">Patient</Label>
               </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem value="provider" id="provider" />
+              <div className="flex items-center">
+                <input
+                  type="radio"
+                  id="provider"
+                  name="userType"
+                  value="provider"
+                  checked={userType === "provider"}
+                  onChange={() => setUserType("provider")}
+                  className="mr-2"
+                />
                 <Label htmlFor="provider" className="cursor-pointer">Provider</Label>
               </div>
-            </RadioGroup>
+            </div>
           </div>
         )}
 
