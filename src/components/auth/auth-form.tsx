@@ -49,7 +49,7 @@ const AuthForm = ({ mode }: AuthFormProps) => {
       await signInWithGoogle();
     } catch (error) {
       console.error("Google auth error:", error);
-      toast.error("Google sign in failed. Please try again.");
+      // No need for a toast here as the error is already handled in the context
     } finally {
       setLoading(false);
     }
@@ -65,6 +65,14 @@ const AuthForm = ({ mode }: AuthFormProps) => {
           {mode === "login"
             ? "Sign in to access your account"
             : "Join the Lyra Health platform today"}
+        </p>
+      </div>
+
+      <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+        <h3 className="text-sm font-medium text-yellow-800">Authentication Notice</h3>
+        <p className="text-xs text-yellow-700 mt-1">
+          Email authentication is currently disabled. Please use Google Sign In instead. 
+          Administrators need to enable Google authentication in the Supabase dashboard.
         </p>
       </div>
 

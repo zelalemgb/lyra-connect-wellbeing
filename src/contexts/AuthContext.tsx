@@ -93,7 +93,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         },
       });
       
-      if (error) throw error;
+      if (error) {
+        // Check specifically for the provider not enabled error
+        if (error.message.includes("provider is not enabled")) {
+          throw new Error("Google authentication is not enabled. Please enable it in your Supabase dashboard.");
+        }
+        throw error;
+      }
       // No success toast here as the user is redirected to Google
     } catch (error: any) {
       toast.error(error.message || 'Error signing in with Google');
