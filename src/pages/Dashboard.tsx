@@ -1,18 +1,23 @@
 
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/ui/navbar";
 import PatientDashboard from "@/components/dashboard/patient-dashboard";
 import ProviderDashboard from "@/components/dashboard/provider-dashboard";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import LanguageSwitcher from "@/components/ui/language-switcher";
 
 const Dashboard = () => {
-  // This would be determined by auth in a real implementation
   const [userType, setUserType] = useState("patient");
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <div className="lyra-container flex-1 py-8">
+        <div className="flex justify-end mb-4">
+          <LanguageSwitcher />
+        </div>
         <div className="mb-8">
           <Tabs defaultValue="patient" className="w-full">
             <TabsList className="flex space-x-1 rounded-xl bg-lyra-blue/20 p-1">

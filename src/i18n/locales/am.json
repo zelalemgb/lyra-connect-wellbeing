@@ -1,0 +1,25 @@
+
+{
+  "welcome": {
+    "title": "እንኳን ደህና መጡ፣ {{name}}",
+    "subtitle": "ቀጠሮዎችዎን እና የጤና መረጃዎን ያስተዳድሩ"
+  },
+  "metrics": {
+    "heartRate": "የልብ ምት",
+    "bloodPressure": "የደም ግፊት",
+    "bloodSugar": "የስኳር መጠን",
+    "healthScore": "የጤና ውጤት",
+    "normalRange": "መደበኛ መጠን፡ {{range}}",
+    "targetRange": "የታለመ መጠን፡ {{range}}"
+  },
+  "dashboard": {
+    "healthOverview": "የጤና አጠቃላይ ሁኔታ",
+    "upcomingAppointments": "የሚመጡ ቀጠሮዎች",
+    "pastConsultations": "ያለፉ ምክክሮች",
+    "savedProviders": "የተቀመጡ አገልግሎት ሰጪዎች",
+    "findProvider": "አገልግሎት ሰጪ ፈልግ",
+    "schedule": "መርሐግብር",
+    "messages": "መልእክቶች",
+    "profile": "መገለጫ"
+  }
+}

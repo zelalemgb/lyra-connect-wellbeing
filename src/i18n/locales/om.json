@@ -1,0 +1,25 @@
+
+{
+  "welcome": {
+    "title": "Baga nagaan dhuftan, {{name}}",
+    "subtitle": "Appointment fi odeeffannoo fayyaa keessan bulchaa"
+  },
+  "metrics": {
+    "heartRate": "Rukuttaa Onnee",
+    "bloodPressure": "Dhiibbaa Dhiigaa",
+    "bloodSugar": "Hamma Sukkaaraa",
+    "healthScore": "Qabxii Fayyaa",
+    "normalRange": "Hamma idilee: {{range}}",
+    "targetRange": "Hamma kaayyeffame: {{range}}"
+  },
+  "dashboard": {
+    "healthOverview": "Ilaalcha Waliigalaa Fayyaa",
+    "upcomingAppointments": "Appointment Dhufuu",
+    "pastConsultations": "Mariyannoo Darbe",
+    "savedProviders": "Dhiyeessitoota Qusataman",
+    "findProvider": "Dhiyeessaa Barbaadi",
+    "schedule": "Sagantaa",
+    "messages": "Ergaawwan",
+    "profile": "Profaayilii"
+  }
+}

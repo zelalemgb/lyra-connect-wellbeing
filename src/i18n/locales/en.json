@@ -1,0 +1,25 @@
+
+{
+  "welcome": {
+    "title": "Welcome, {{name}}",
+    "subtitle": "Manage your appointments and health information"
+  },
+  "metrics": {
+    "heartRate": "Heart Rate",
+    "bloodPressure": "Blood Pressure",
+    "bloodSugar": "Blood Sugar",
+    "healthScore": "Health Score",
+    "normalRange": "Normal range: {{range}}",
+    "targetRange": "Target range: {{range}}"
+  },
+  "dashboard": {
+    "healthOverview": "Health Overview",
+    "upcomingAppointments": "Upcoming Appointments",
+    "pastConsultations": "Past Consultations",
+    "savedProviders": "Saved Providers",
+    "findProvider": "Find a Provider",
+    "schedule": "Schedule",
+    "messages": "Messages",
+    "profile": "Profile"
+  }
+}
