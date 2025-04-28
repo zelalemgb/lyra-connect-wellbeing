@@ -1,9 +1,9 @@
 
 import { useState } from "react";
-import { Tab } from "@headlessui/react";
 import Navbar from "@/components/ui/navbar";
 import PatientDashboard from "@/components/dashboard/patient-dashboard";
 import ProviderDashboard from "@/components/dashboard/provider-dashboard";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
 const Dashboard = () => {
   // This would be determined by auth in a real implementation
@@ -14,46 +14,30 @@ const Dashboard = () => {
       <Navbar />
       <div className="lyra-container flex-1 py-8">
         <div className="mb-8">
-          <Tab.Group>
-            <Tab.List className="flex space-x-1 rounded-xl bg-lyra-blue/20 p-1">
-              <Tab
-                className={({ selected }) =>
-                  `w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-lyra-dark
-                  ${
-                    selected
-                      ? "bg-white shadow"
-                      : "text-gray-600 hover:bg-white/[0.12] hover:text-lyra-teal"
-                  }
-                  `
-                }
+          <Tabs defaultValue="patient" className="w-full">
+            <TabsList className="flex space-x-1 rounded-xl bg-lyra-blue/20 p-1">
+              <TabsTrigger 
+                value="patient"
                 onClick={() => setUserType("patient")}
+                className="w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-lyra-dark data-[state=active]:bg-white data-[state=active]:shadow data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-white/[0.12] data-[state=inactive]:hover:text-lyra-teal"
               >
                 Patient View
-              </Tab>
-              <Tab
-                className={({ selected }) =>
-                  `w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-lyra-dark
-                  ${
-                    selected
-                      ? "bg-white shadow"
-                      : "text-gray-600 hover:bg-white/[0.12] hover:text-lyra-teal"
-                  }
-                  `
-                }
+              </TabsTrigger>
+              <TabsTrigger 
+                value="provider"
                 onClick={() => setUserType("provider")}
+                className="w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-lyra-dark data-[state=active]:bg-white data-[state=active]:shadow data-[state=inactive]:text-gray-600 data-[state=inactive]:hover:bg-white/[0.12] data-[state=inactive]:hover:text-lyra-teal"
               >
                 Provider View
-              </Tab>
-            </Tab.List>
-            <Tab.Panels className="mt-6">
-              <Tab.Panel>
-                <PatientDashboard />
-              </Tab.Panel>
-              <Tab.Panel>
-                <ProviderDashboard />
-              </Tab.Panel>
-            </Tab.Panels>
-          </Tab.Group>
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="patient" className="mt-6">
+              <PatientDashboard />
+            </TabsContent>
+            <TabsContent value="provider" className="mt-6">
+              <ProviderDashboard />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </div>
