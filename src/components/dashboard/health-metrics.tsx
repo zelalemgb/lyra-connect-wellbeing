@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { HeartPulse, Activity, Thermometer, ChartLine, ArrowUp, ArrowDown } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
@@ -97,17 +98,17 @@ const HealthMetrics = () => {
         </Card>
       </div>
 
-      <Card>
+      <Card className="mb-8">
         <CardHeader>
           <CardTitle>Health Trends</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="h-[300px]">
+          <div className="h-[300px] w-full">
             <ChartContainer
               config={healthConfig}
-              className="w-full aspect-[4/3]"
+              className="h-full w-full"
             >
-              <AreaChart data={mockHealthData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <AreaChart data={mockHealthData} margin={{ top: 10, right: 30, left: 0, bottom: 20 }}>
                 <defs>
                   <linearGradient id="heartRate" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#ef4444" stopOpacity={0.8}/>
