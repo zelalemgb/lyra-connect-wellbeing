@@ -12,7 +12,7 @@ type AuthFormProps = {
 };
 
 const AuthForm = ({ mode }: AuthFormProps) => {
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, signInWithGoogle } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -31,7 +31,25 @@ const AuthForm = ({ mode }: AuthFormProps) => {
       }
     } catch (error) {
       console.error("Auth error:", error);
-      toast.error(mode === "login" ? "Login failed. Please try again." : "Registration failed. Please try again.");
+      
+      // Check if the error is due to email provider being disabled
+      if (error.toString().includes("Email") && error.toString().includes("disabled")) {
+        toast.error("Email authentication is currently disabled. Please use Google login instead.");
+      } else {
+        toast.error(mode === "login" ? "Login failed. Please try again." : "Registration failed. Please try again.");
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setLoading(true);
+      await signInWithGoogle();
+    } catch (error) {
+      console.error("Google auth error:", error);
+      toast.error("Google sign in failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -165,7 +183,13 @@ const AuthForm = ({ mode }: AuthFormProps) => {
       </div>
 
       <div className="grid grid-cols-1 gap-3">
-        <Button variant="outline" type="button" className="w-full">
+        <Button 
+          variant="outline" 
+          type="button" 
+          className="w-full"
+          onClick={handleGoogleSignIn}
+          disabled={loading}
+        >
           <svg
             className="mr-2 h-4 w-4"
             viewBox="0 0 24 24"
