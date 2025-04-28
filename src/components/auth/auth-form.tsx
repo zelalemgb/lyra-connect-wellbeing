@@ -31,13 +31,7 @@ const AuthForm = ({ mode }: AuthFormProps) => {
       }
     } catch (error) {
       console.error("Auth error:", error);
-      
-      // Check if the error is due to email provider being disabled
-      if (error.toString().includes("Email") && error.toString().includes("disabled")) {
-        toast.error("Email authentication is currently disabled. Please use Google login instead.");
-      } else {
-        toast.error(mode === "login" ? "Login failed. Please try again." : "Registration failed. Please try again.");
-      }
+      toast.error(mode === "login" ? "Login failed. Please try again." : "Registration failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -49,7 +43,6 @@ const AuthForm = ({ mode }: AuthFormProps) => {
       await signInWithGoogle();
     } catch (error) {
       console.error("Google auth error:", error);
-      // No need for a toast here as the error is already handled in the context
     } finally {
       setLoading(false);
     }
@@ -65,14 +58,6 @@ const AuthForm = ({ mode }: AuthFormProps) => {
           {mode === "login"
             ? "Sign in to access your account"
             : "Join the Lyra Health platform today"}
-        </p>
-      </div>
-
-      <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-        <h3 className="text-sm font-medium text-yellow-800">Authentication Notice</h3>
-        <p className="text-xs text-yellow-700 mt-1">
-          Email authentication is currently disabled. Please use Google Sign In instead. 
-          Administrators need to enable Google authentication in the Supabase dashboard.
         </p>
       </div>
 
