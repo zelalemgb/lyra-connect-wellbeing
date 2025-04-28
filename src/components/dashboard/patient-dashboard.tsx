@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calendar, Clock, MessageSquare, Search, User } from "lucide-react";
 import { Link } from "react-router-dom";
+import HealthMetrics from "./health-metrics";
 
 const mockAppointments = [
   {
@@ -55,6 +55,12 @@ const PatientDashboard = () => {
         <p className="text-gray-600 mt-2">
           Manage your appointments and health information
         </p>
+      </section>
+
+      {/* Health Metrics */}
+      <section>
+        <h2 className="text-xl font-semibold mb-4">Health Overview</h2>
+        <HealthMetrics />
       </section>
 
       {/* Stats Cards */}
