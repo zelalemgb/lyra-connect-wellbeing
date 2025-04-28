@@ -1,11 +1,10 @@
-
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 
 type AuthFormProps = {
@@ -13,6 +12,8 @@ type AuthFormProps = {
 };
 
 const AuthForm = ({ mode }: AuthFormProps) => {
+  const navigate = useNavigate();
+  const { signIn, signUp } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -24,16 +25,11 @@ const AuthForm = ({ mode }: AuthFormProps) => {
     setLoading(true);
 
     try {
-      // This would be replaced with actual authentication logic
-      console.log("Form submitted:", { email, password, name, userType });
-      
       if (mode === "login") {
-        toast.success("Login successful!");
+        await signIn(email, password);
       } else {
-        toast.success("Registration successful!");
+        await signUp(email, password, userType);
       }
-      
-      // Redirect would happen here in a real implementation
     } catch (error) {
       console.error("Auth error:", error);
       toast.error(mode === "login" ? "Login failed. Please try again." : "Registration failed. Please try again.");
